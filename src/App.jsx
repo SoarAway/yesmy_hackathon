@@ -138,7 +138,7 @@ export default function App() {
       ) : null}
 
       <main className="hide-scrollbar h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
-        <section className="relative flex h-[78vh] snap-start items-center justify-center px-6 pt-16 sm:h-[82vh]">
+        <section className="relative flex h-[58vh] snap-start items-center justify-center px-6 pt-16 sm:h-[62vh]">
           <div className="absolute inset-0 overflow-hidden">
             <img
               src={heroBannerPrimary}
