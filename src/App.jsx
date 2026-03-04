@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import yesLogo from "./yes_logo.png";
+import heroBannerPrimary from "./5g-advanced-deals-banner-desktop.webp";
+import heroBannerSecondary from "./ajak-en-offer-banner-en.webp";
 
 const primaryNavItems = ["Devices", "5G Plans", "Broadband", "Gaming", "Support"];
 const quickMenuItems = ["Personal", "Enterprise", "Learning"];
@@ -161,15 +163,27 @@ export default function App() {
 
       <main className="hide-scrollbar h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
         <section className="relative flex h-[78vh] snap-start items-center justify-center px-6 pt-16 sm:h-[82vh]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(244,244,245,0.95),transparent_40%),radial-gradient(circle_at_80%_15%,rgba(243,244,246,0.95),transparent_40%)]" />
+          <div className="absolute inset-0 overflow-hidden">
+            <img
+              src={heroBannerPrimary}
+              alt="YES 5G promo banner"
+              className="h-full w-full object-cover"
+            />
+            <img
+              src={heroBannerSecondary}
+              alt="YES bonus offer banner"
+              className="absolute inset-0 h-full w-full object-cover opacity-45"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/45" />
+          </div>
           <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center justify-center text-center">
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-gray-500">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-gray-100">
               Yes 5G Hackathon MVP
             </p>
-            <h1 className="text-5xl font-black leading-tight text-gray-900 sm:text-6xl">
+            <h1 className="text-5xl font-black leading-tight text-white sm:text-6xl">
               Uncap Yourself
             </h1>
-            <p className="mt-4 max-w-md text-base text-gray-600 sm:text-lg">
+            <p className="mt-4 max-w-md text-base text-gray-100 sm:text-lg">
               Malaysia&apos;s 5G network without limits
             </p>
             <button
