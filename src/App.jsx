@@ -3,6 +3,7 @@ import yesLogo from "./yes_logo.png";
 
 const primaryNavItems = ["Devices", "5G Plans", "Broadband", "Gaming", "Support"];
 const quickMenuItems = ["Personal", "Enterprise", "Learning"];
+const quickActionItems = ["Coverage", "Speed Test", "Reload", "Switch to YES"];
 
 const deals = [
   {
@@ -118,6 +119,15 @@ export default function App() {
                   {item}
                 </a>
               ))}
+              {quickActionItems.map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="rounded-full border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100"
+                >
+                  {item}
+                </a>
+              ))}
             </nav>
           </div>
           <button
@@ -211,25 +221,6 @@ export default function App() {
                     </button>
                   </div>
                 </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="flex h-screen snap-start items-center justify-center px-6 pt-16">
-          <div className="mx-auto w-full max-w-4xl">
-            <h2 className="mb-6 text-center text-3xl font-black text-gray-900 sm:text-4xl">
-              Quick Actions
-            </h2>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {["Coverage", "Speed Test", "Reload", "Switch to YES"].map((item) => (
-                <button
-                  key={item}
-                  type="button"
-                  className="rounded-2xl border border-gray-200 bg-white px-4 py-8 text-center text-sm font-semibold text-gray-900 shadow-sm"
-                >
-                  {item}
-                </button>
               ))}
             </div>
           </div>
