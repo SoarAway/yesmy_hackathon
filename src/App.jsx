@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import yesLogo from "./yes_logo.png";
 
-const menuItems = ["Devices", "5G Plans", "Broadband", "Gaming", "Support"];
+const primaryNavItems = ["Devices", "5G Plans", "Broadband", "Gaming", "Support"];
+const quickMenuItems = ["Personal", "Enterprise", "Learning"];
 
 const deals = [
   {
@@ -35,6 +36,17 @@ const deals = [
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showIntroBanner, setShowIntroBanner] = useState(true);
+
+  useEffect(() => {
+    const introTimer = setTimeout(() => {
+      setShowIntroBanner(false);
+    }, 2600);
+
+    return () => {
+      clearTimeout(introTimer);
+    };
+  }, []);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -47,16 +59,42 @@ export default function App() {
     };
   }, [isMenuOpen]);
 
+  if (showIntroBanner) {
+    return (
+      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white px-6">
+        <div className="flex flex-col items-center text-center">
+          <img src={yesLogo} alt="YES logo" className="h-20 w-auto sm:h-24" />
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.35em] text-gray-500">
+            Malaysia 5G Experience
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative bg-white text-gray-900">
       <header className="fixed inset-x-0 top-0 z-40 h-16 border-b border-gray-200 bg-white/95 backdrop-blur-md">
         <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-4">
-          <img src={yesLogo} alt="YES logo" className="h-9 w-auto" />
+          <div className="flex items-center gap-4">
+            <img src={yesLogo} alt="YES logo" className="h-9 w-auto" />
+            <nav className="hide-scrollbar flex max-w-[52vw] items-center gap-2 overflow-x-auto whitespace-nowrap">
+              {primaryNavItems.map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="rounded-full px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100"
+                >
+                  {item}
+                </a>
+              ))}
+            </nav>
+          </div>
           <button
             type="button"
             onClick={() => setIsMenuOpen((prev) => !prev)}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-gray-700"
-            aria-label="Open navigation menu"
+            aria-label="Open personal menu"
             aria-expanded={isMenuOpen}
           >
             <span className="text-xl leading-none">{isMenuOpen ? "x" : "≡"}</span>
@@ -65,21 +103,13 @@ export default function App() {
       </header>
 
       {isMenuOpen ? (
-        <div className="fixed inset-0 z-50 flex h-screen w-full flex-col bg-white px-6 pt-24">
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen(false)}
-            className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-gray-700"
-            aria-label="Close navigation menu"
-          >
-            <span className="text-xl leading-none">x</span>
-          </button>
-          <nav className="flex flex-1 flex-col justify-center gap-5">
-            {menuItems.map((item) => (
+        <div className="fixed inset-x-0 top-16 z-50 flex justify-end px-4">
+          <nav className="w-full max-w-xs rounded-2xl border border-gray-200 bg-white p-3 shadow-lg">
+            {quickMenuItems.map((item) => (
               <a
                 key={item}
                 href="#"
-                className="rounded-2xl border border-gray-200 bg-white px-5 py-4 text-center text-xl font-semibold text-gray-900"
+                className="block rounded-xl px-4 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-100"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item}
