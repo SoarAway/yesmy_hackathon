@@ -1,0 +1,270 @@
+:root {
+  --bg: #09090b;
+  --surface: #121216;
+  --surface-soft: #191922;
+  --text: #f5f7ff;
+  --muted: #a7abc7;
+  --yes-magenta: #ff0f8a;
+  --ytl-blue: #1da6ff;
+  --radius: 18px;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --glass: rgba(18, 18, 25, 0.72);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 15% 5%, rgba(255, 15, 138, 0.2), transparent 32%),
+    radial-gradient(circle at 85% 15%, rgba(29, 166, 255, 0.26), transparent 34%),
+    var(--bg);
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(90deg, rgba(9, 9, 11, 0.87), rgba(9, 9, 11, 0.55));
+  border-bottom: 1px solid rgba(29, 166, 255, 0.25);
+}
+
+.brand {
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  font-size: 1.1rem;
+  color: var(--yes-magenta);
+}
+
+.header-nav {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.ghost-btn,
+.menu-btn,
+.cta-secondary,
+.utility-tile,
+.task-tile,
+.mobile-sticky button {
+  border: 1px solid rgba(29, 166, 255, 0.33);
+  background: var(--glass);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.55rem 0.85rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.menu-btn {
+  border-color: rgba(255, 15, 138, 0.65);
+}
+
+.snap-shell {
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  padding-bottom: 92px;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  min-height: calc(100vh - 64px);
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h1 {
+  margin: 0.4rem 0 0.7rem;
+  font-size: clamp(1.7rem, 5.5vw, 3rem);
+  line-height: 1.06;
+  max-width: 20ch;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--ytl-blue);
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.hero-copy {
+  margin: 0;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.hero-ctas {
+  margin-top: 1.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.cta-primary {
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, var(--yes-magenta), #ff4db0);
+  box-shadow: 0 12px 26px rgba(255, 15, 138, 0.4);
+}
+
+.cta-primary.small {
+  margin-top: 1rem;
+  padding: 0.6rem 0.9rem;
+}
+
+.tasks-section h2,
+.deals-section h2,
+.utility-section h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+}
+
+.tasks-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.task-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  border-radius: var(--radius);
+  padding: 0.95rem;
+}
+
+.task-index {
+  color: var(--ytl-blue);
+  font-weight: 700;
+}
+
+.trust-strip {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.trust-strip span {
+  background: var(--surface-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #dbe1ff;
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.86rem;
+}
+
+.deals-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.deal-card {
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(18, 18, 25, 0.95), rgba(11, 11, 15, 0.96));
+  border: 1px solid rgba(29, 166, 255, 0.35);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.deal-card h3 {
+  margin: 0;
+}
+
+.deal-card p {
+  color: var(--muted);
+  margin: 0.55rem 0 0;
+}
+
+.utility-section p {
+  margin-top: 0;
+  color: var(--muted);
+}
+
+.utility-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.utility-tile {
+  border-radius: var(--radius);
+  padding: 0.95rem;
+  text-align: left;
+}
+
+.mobile-sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+  padding: 0.5rem;
+  background: rgba(9, 9, 11, 0.9);
+  border-top: 1px solid rgba(29, 166, 255, 0.3);
+}
+
+.mobile-sticky button {
+  border-radius: 12px;
+  padding: 0.55rem 0.25rem;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 860px) {
+  .snap-shell {
+    padding-inline: 2rem;
+  }
+
+  .snap-section {
+    padding-inline: 0;
+  }
+
+  .tasks-row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .deals-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .utility-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mobile-sticky {
+    max-width: 680px;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 14px 14px 0 0;
+  }
+}
