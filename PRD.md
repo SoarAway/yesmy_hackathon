@@ -1,1 +1,266 @@
-This Product Requirements Document (PRD) is designed to be lean, actionable, and optimized for an AI agent or a developer to execute during your hackathon.PRD: Yes.my Landing Page Revamp1. ObjectiveTransform the current Yes.my landing page into a mobile-first, high-performance portal that eliminates clutter ("jio-ing" banners) and aligns with the Jio (India) digital ecosystem benchmark.2. Target AudiencePrimary: Mobile-first Gen Z and Millennials looking for 5G devices and data plans.Secondary: Business users looking for reliable 5G broadband.3. Functional Requirements3.1. Navigation & HeaderFlat Architecture: Remove all nested/dropdown sub-menus.Sticky Glassmorphism: The header must be sticky with a backdrop-blur effect.Mobile Trigger: A single hamburger menu that opens into a flat list of icons/categories.3.2. Section-Based Experience (The "One Scroll" Rule)Requirement: Implement CSS Scroll Snapping. Each swipe must land perfectly on a specific section.Logic: Container must use snap-y snap-mandatory.3.3. Section BreakdownSection 1: The Hero (Brand Hook)Content: "Uncap Yourself" messaging + 1 primary CTA.Style: Ethereal realism background (gradient/glow effects).Behavior: Occupies $100vh$.Section 2: The Deals Hub (Replacement for Top Banners)Content: A horizontal, swipeable card strip.Cards: High-res device images (iPhone 17, Samsung S26) + Pricing + "Buy Now".Branding: Use YTL Blue for card borders/shadows and Yes Magenta for CTAs.Section 3: Action Grid (The Utility)Layout: A 2x2 or 2x3 grid of large, tappable icons.Items: Coverage Checker, Speed Test, Reload, Switch to Yes.Section 4: The EcosystemContent: Yes Gaming (GeForce NOW) or 5G Broadband.4. Design & Branding (UI/UX)Anti-Jio Logic: No static promo banners at the top. All promotions must live inside the Deals Hub cards.Color Palette:Core: Black/Dark Grey background.Identity: Yes Magenta for urgency and buttons.Heritage: YTL Blue for structural lines, icons, and secondary info.Typography: Bold sans-serif (e.g., Inter or Montserrat).5. Technical Specifications (For AI/Dev)Framework: React / Next.js.Styling: Tailwind CSS.Key CSS Classes:Container: h-screen overflow-y-scroll snap-y snap-mandatorySection: h-screen snap-startImage Optimization: Use .webp or .avif for fast mobile loading.6. Success Metrics for HackathonClarity: Can a user identify the top deal in <1 second?Efficiency: Does the navigation require more than 2 taps for any major service?Performance: 90+ Score on Google Lighthouse (Mobile).
+SINGLE IMPLEMENTATION PROMPT
+
+Build a mobile first landing page prototype for Yes.my using Next.js App Router and Tailwind CSS.
+
+This is a hackathon MVP. Deliver a single page only. No backend, no CMS, no API integration, no authentication.
+
+Objective:
+Create a high performance, scroll snapping, section based landing page that removes banner clutter and prioritizes 5G deals.
+
+Design benchmark reference: Reliance Jio digital simplicity model.
+
+Technical Requirements
+
+Framework:
+
+Vite 
+
+Tailwind CSS
+
+Use next/image
+
+Use static mock data only
+
+Performance:
+
+Use WebP or AVIF placeholders
+
+No heavy animations
+
+No external font loading, use system font stack
+
+Keep layout simple and GPU friendly
+
+Page Architecture
+
+The page must follow a strict full screen vertical scroll snap structure.
+
+Main container must use:
+
+h-screen
+overflow-y-scroll
+snap-y
+snap-mandatory
+scroll-smooth
+
+Each section must use:
+
+h-screen
+snap-start
+flex
+items-center
+justify-center
+
+No partial height sections.
+
+Color System
+
+Background:
+Black or very dark gray
+
+Primary CTA:
+Yes Magenta, use a strong pink tone
+
+Structural accents:
+YTL Blue, use for borders and icons
+
+Text:
+White or light gray only
+
+Do not introduce additional colors.
+
+Navigation
+
+Create a sticky header:
+
+Fixed at top
+
+Height max 72px
+
+Backdrop blur glass effect
+
+Semi transparent dark background
+
+Logo text on left: YES
+
+Hamburger icon on right
+
+Hamburger opens a simple full screen overlay menu with flat links:
+
+Devices
+5G Plans
+Broadband
+Gaming
+Support
+
+No dropdowns. No nested menus.
+
+Section 1: Hero
+
+Purpose:
+Immediate brand hook and clarity.
+
+Content:
+Headline: Uncap Yourself
+Subtext: Malaysia’s 5G network without limits
+Primary CTA button: Explore Deals
+
+Layout:
+
+Centered vertically and horizontally
+
+Large bold typography
+
+Single CTA only
+
+Subtle dark gradient background
+
+No product images
+
+No rotating banners
+
+Acceptance rule:
+Headline and CTA visible instantly on load without scroll.
+
+Section 2: Deals Hub
+
+Purpose:
+Replace all promotional banners with a horizontal swipeable card strip.
+
+Structure:
+A horizontal scroll container inside the full screen section.
+
+Container must use:
+flex
+overflow-x-auto
+snap-x
+snap-mandatory
+gap-6
+px-6
+
+Each card must use:
+min-w-[85%]
+snap-start
+rounded-xl
+p-6
+border
+shadow-lg
+
+Card design:
+
+High resolution product image at top
+
+Device name
+
+Price per month
+
+Buy Now button
+
+Mock cards required:
+
+iPhone 17
+
+Samsung S26
+
+Yes 5G Plan RM58
+
+Use placeholder images.
+
+Card styling:
+
+Border or glow in blue tone
+
+Buy Now button in magenta
+
+Clear price hierarchy
+
+Rules:
+
+No auto scrolling
+
+First card must be fully visible when section loads
+
+Must feel like premium product cards
+
+Acceptance rule:
+Top deal identifiable in under 1 second.
+
+Section 3: Action Grid
+
+Purpose:
+Utility acceleration.
+
+Layout:
+Grid with 2 columns.
+Use gap-6.
+Centered content.
+
+Items required:
+Coverage Checker
+Speed Test
+Reload
+Switch to Yes
+
+Each grid item:
+
+Large icon placeholder
+
+Label below
+
+Large tap area
+
+Rounded container
+
+Subtle blue border
+
+Minimum tap size visually large enough for mobile comfort.
+
+No small micro text.
+
+Section 4: Ecosystem
+
+Choose Yes Gaming focus.
+
+Reference integration conceptually with GeForce NOW.
+
+Layout:
+
+Full screen background image
+
+Dark overlay
+
+Headline: Yes 5G Gaming
+
+Subtext: Console level gaming without the console
+
+CTA: Start Playing
+
+Single CTA only.
+
+No secondary content.
+
+UX Rules
+
+Strict 2 tap principle:
+All major actions must be reachable within two taps from landing.
+
+No clutter.
+No secondary banners.
+No popups.
+No carousels.
+No auto animations.
+
+Desktop can stack normally but prioritize mobile viewport width first.
+
+File Structure
+
+Use a single page.tsx file for the landing page.
+
+Create small functional components inside the same file if needed:
+Header
+Hero
+DealsSection
+ActionGrid
+Ecosystem
+
+Keep everything in one file for speed.
