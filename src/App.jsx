@@ -37,13 +37,19 @@ const deals = [
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showIntroBanner, setShowIntroBanner] = useState(true);
+  const [promoActive, setPromoActive] = useState(false);
 
   useEffect(() => {
+    const promoTimer = setTimeout(() => {
+      setPromoActive(true);
+    }, 250);
+
     const introTimer = setTimeout(() => {
       setShowIntroBanner(false);
-    }, 2600);
+    }, 3400);
 
     return () => {
+      clearTimeout(promoTimer);
       clearTimeout(introTimer);
     };
   }, []);
@@ -61,11 +67,35 @@ export default function App() {
 
   if (showIntroBanner) {
     return (
-      <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white px-6">
-        <div className="flex flex-col items-center text-center">
-          <img src={yesLogo} alt="YES logo" className="h-20 w-auto sm:h-24" />
-          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.35em] text-gray-500">
-            Malaysia 5G Experience
+      <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_15%_20%,#fce7f3,transparent_42%),radial-gradient(circle_at_80%_12%,#dbeafe,transparent_38%),#ffffff] px-6">
+        <div
+          className={`relative w-full max-w-xl rounded-3xl border border-gray-200/80 bg-white/90 p-8 text-center shadow-xl backdrop-blur transition-all duration-700 sm:p-10 ${
+            promoActive ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          }`}
+        >
+          <img src={yesLogo} alt="YES logo" className="mx-auto h-14 w-auto sm:h-16" />
+          <p className="mt-5 inline-flex rounded-full bg-rose-50 px-4 py-1 text-xs font-bold uppercase tracking-[0.18em] text-rose-600">
+            Limited Time Promo
+          </p>
+          <h1 className="mt-4 text-3xl font-black leading-tight text-gray-900 sm:text-4xl">
+            Unlimited 5G from RM58/month
+          </h1>
+          <p className="mt-3 text-sm font-medium text-gray-600 sm:text-base">
+            Join YES today and unlock faster streaming, gaming, and always-on data.
+          </p>
+          <div className="mt-6 h-1.5 overflow-hidden rounded-full bg-gray-100">
+            <div
+              className={`h-full bg-gradient-to-r from-sky-400 to-rose-500 transition-all duration-[3000ms] ${
+                promoActive ? "w-full" : "w-0"
+              }`}
+            />
+          </div>
+          <p
+            className={`mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 transition-all duration-700 ${
+              promoActive ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            Entering Experience...
           </p>
         </div>
       </div>
@@ -120,7 +150,7 @@ export default function App() {
       ) : null}
 
       <main className="hide-scrollbar h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
-        <section className="relative flex h-screen snap-start items-center justify-center px-6 pt-16">
+        <section className="relative flex h-[78vh] snap-start items-center justify-center px-6 pt-16 sm:h-[82vh]">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(244,244,245,0.95),transparent_40%),radial-gradient(circle_at_80%_15%,rgba(243,244,246,0.95),transparent_40%)]" />
           <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center justify-center text-center">
             <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-gray-500">
