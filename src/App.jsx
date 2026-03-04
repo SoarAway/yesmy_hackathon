@@ -5,8 +5,7 @@ import heroBannerSecondary from "./ajak-en-offer-banner-en.webp";
 
 const primaryNavItems = ["Devices", "5G Plans", "Broadband", "Gaming", "Support"];
 const quickMenuItems = ["Personal", "Enterprise", "Learning"];
-const quickActionItems = ["Coverage", "Speed Test", "Reload", "Switch to YES"];
-const mobileMenuItems = [...primaryNavItems, ...quickActionItems, ...quickMenuItems];
+const mobileMenuItems = [...primaryNavItems, "Quick Tools", ...quickMenuItems];
 
 const deals = [
   {
@@ -98,15 +97,12 @@ export default function App() {
                   {item}
                 </a>
               ))}
-              {quickActionItems.map((item) => (
-                <a
-                  key={item}
-                  href="#"
-                  className="rounded-full border border-gray-200 px-3 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100"
-                >
-                  {item}
-                </a>
-              ))}
+              <a
+                href="#"
+                className="rounded-full border border-gray-900 bg-gray-900 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-black"
+              >
+                Quick Tools
+              </a>
             </nav>
           </div>
           <button
