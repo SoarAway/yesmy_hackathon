@@ -66,14 +66,9 @@ export default function App() {
     return (
       <div className="fixed inset-0 z-[100] overflow-hidden bg-black">
         <img
-          src={heroBannerPrimary}
+          src={heroBannerSecondary}
           alt="YES 5G full-screen promo"
           className="h-full w-full object-cover"
-        />
-        <img
-          src={heroBannerSecondary}
-          alt="YES offer overlay"
-          className="absolute inset-0 h-full w-full object-cover opacity-45"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/35 to-black/60" />
         <div className="absolute inset-x-0 bottom-10 flex flex-col items-center px-6 text-center">
@@ -149,11 +144,6 @@ export default function App() {
               src={heroBannerPrimary}
               alt="YES 5G promo banner"
               className="h-full w-full object-cover"
-            />
-            <img
-              src={heroBannerSecondary}
-              alt="YES bonus offer banner"
-              className="absolute inset-0 h-full w-full object-cover opacity-45"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/45" />
           </div>
