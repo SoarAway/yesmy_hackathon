@@ -6,6 +6,7 @@ import heroBannerSecondary from "./ajak-en-offer-banner-en.webp";
 const primaryNavItems = ["Devices", "5G Plans", "Broadband", "Gaming", "Support"];
 const quickMenuItems = ["Personal", "Enterprise", "Learning"];
 const quickActionItems = ["Coverage", "Speed Test", "Reload", "Switch to YES"];
+const mobileMenuItems = [...primaryNavItems, ...quickActionItems, ...quickMenuItems];
 
 const deals = [
   {
@@ -87,7 +88,7 @@ export default function App() {
         <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between px-4">
           <div className="flex items-center gap-4">
             <img src={yesLogo} alt="YES logo" className="h-9 w-auto" />
-            <nav className="hide-scrollbar flex max-w-[52vw] items-center gap-2 overflow-x-auto whitespace-nowrap">
+            <nav className="hide-scrollbar hidden max-w-[52vw] items-center gap-2 overflow-x-auto whitespace-nowrap md:flex">
               {primaryNavItems.map((item) => (
                 <a
                   key={item}
@@ -123,11 +124,24 @@ export default function App() {
       {isMenuOpen ? (
         <div className="fixed inset-x-0 top-16 z-50 flex justify-end px-4">
           <nav className="w-full max-w-xs rounded-2xl border border-gray-200 bg-white p-3 shadow-lg">
+            <div className="mb-2 px-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-500 md:hidden">
+              Menu
+            </div>
+            {mobileMenuItems.map((item) => (
+              <a
+                key={item}
+                href="#"
+                className="block rounded-xl px-4 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-100 md:hidden"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
             {quickMenuItems.map((item) => (
               <a
                 key={item}
                 href="#"
-                className="block rounded-xl px-4 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-100"
+                className="hidden rounded-xl px-4 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-100 md:block"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item}
@@ -137,7 +151,7 @@ export default function App() {
         </div>
       ) : null}
 
-      <main className="hide-scrollbar h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+      <main className="hide-scrollbar min-h-screen overflow-y-auto scroll-smooth md:h-screen md:overflow-y-scroll md:snap-y md:snap-mandatory">
         <section className="relative flex h-[58vh] snap-start items-center justify-center px-6 pt-16 sm:h-[62vh]">
           <div className="absolute inset-0 overflow-hidden">
             <img
@@ -166,7 +180,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="flex h-screen snap-start items-center justify-center px-4 pt-16">
+        <section className="flex min-h-[72vh] snap-start items-center justify-center px-4 py-10 pt-20 sm:min-h-[78vh] md:h-screen md:py-0 md:pt-16">
           <div className="w-full max-w-6xl">
             <div className="mb-6 text-center">
               <h2 className="text-3xl font-black text-gray-900 sm:text-4xl">Deals Hub</h2>
@@ -179,7 +193,7 @@ export default function App() {
               {deals.map((deal) => (
                 <article
                   key={deal.title}
-                  className="w-[82vw] shrink-0 snap-start rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:w-[420px]"
+                  className="w-[88vw] shrink-0 snap-start rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:w-[420px]"
                 >
                   <div className="overflow-hidden rounded-xl border border-gray-200">
                     <picture>
@@ -211,7 +225,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="flex h-screen snap-start items-center justify-center px-6 pt-16">
+        <section className="flex min-h-[62vh] snap-start items-center justify-center px-6 py-12 pt-20 md:h-screen md:py-0 md:pt-16">
           <div className="mx-auto flex w-full max-w-3xl flex-col items-center text-center">
             <h2 className="text-3xl font-black text-gray-900 sm:text-4xl">YES 5G Ecosystem</h2>
             <p className="mt-4 max-w-xl text-gray-600">
